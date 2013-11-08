@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<configuration>
+	<!-- address performance concern with jul-to-slf4j -->
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level [%thread] %C -> %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/webmarket.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${catalina.base}/logs/webmarket_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level [%thread] %C -> %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="de.sag" level="trace" />
+	<logger name="org.hibernate" level="trace" />
+	<root level="trace">
+		<appender-ref ref="STDOUT" />
+		<!--  <appender-ref ref="FILE" />-->
+	</root>
+</configuration>
