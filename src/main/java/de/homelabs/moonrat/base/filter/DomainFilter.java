@@ -45,6 +45,7 @@ public class DomainFilter extends GenericFilterBean implements ApplicationContex
 		String webdomain = new URL(httpRequest.getRequestURL().toString()).getHost();
 		
 		//check domain, returns the related projectId
+		//projectManager = (ProjectManager) context.getBean("projectManager");
 		long projectId = projectManager.isWebDomainPermitted(webdomain);
 		
 		if (projectId == 0){
