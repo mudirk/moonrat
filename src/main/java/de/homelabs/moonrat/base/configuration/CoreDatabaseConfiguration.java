@@ -30,7 +30,7 @@ public class CoreDatabaseConfiguration {
 	@Qualifier("coreSessionFactoryBean")
 	public LocalSessionFactoryBean sessionFactoryBean() {
 		LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
-		lsfb.setPackagesToScan("de.homelabs.moonrat");
+		lsfb.setPackagesToScan("de.homelabs.moonrat.base");
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.put("hibernate.show_sql", true);
 		hibernateProperties.put("hibernate.format_sql", true);
